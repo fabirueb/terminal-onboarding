@@ -38,7 +38,7 @@ defineProps({
   }
 
   &--field {
-    @apply border p-2 rounded focus:ring-primary-950 focus:ring-1 outline-none hover:bg-gray-50;
+    @apply border p-2 rounded focus:ring-primary-950 focus:ring-1 outline-none hover:bg-gray-50 placeholder-gray-300;
   }
 
   &--error {

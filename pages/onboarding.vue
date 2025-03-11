@@ -7,12 +7,38 @@
     <div class="onboarding--content">
       <UiForm as="" v-slot="{ meta }">
         <StepPersonal v-if="currentStep === 0" />
-        {{ meta }}
+        <StepCompany
+          v-if="currentStep === 1"
+          @einzelunternehmer="
+            (value) => {
+              einzelunternehmer = value;
+            }
+          "
+        />
+        <StepBank v-if="currentStep === 2" />
+        <StepDocuments
+          v-if="currentStep === 3"
+          :einzelunternehmer="einzelunternehmer"
+        />
       </UiForm>
     </div>
     <div class="onboarding--buttons">
-      <UiButton>zurück</UiButton>
-      <UiButton>weiter</UiButton>
+      <UiButton
+        @click="
+          () => {
+            currentStep--;
+          }
+        "
+        >zurück</UiButton
+      >
+      <UiButton
+        @click="
+          () => {
+            currentStep++;
+          }
+        "
+        >weiter</UiButton
+      >
     </div>
   </div>
 </template>
@@ -34,6 +60,12 @@ const onboardingSteps = [
       "Tragen Sie die wesentlichen Informationen zu Ihrem Unternehmen ein, einschließlich Firmenname, Rechtsform und Geschäftsadresse.",
   },
   {
+    title: "Bankdaten",
+    icon: "mdi:bank-outline",
+    description:
+      "Geben Sie hier Ihre Bankdaten an. Dies ist notwendig um alle Zahlungen auf den Geräten richtig abzuwickeln.",
+  },
+  {
     title: "Dokumente",
     icon: "solar:documents-bold",
     description:
@@ -42,6 +74,7 @@ const onboardingSteps = [
 ];
 
 const currentStep = ref(0);
+const einzelunternehmer = ref(false);
 
 const onboardingSchema = [
   z.object({

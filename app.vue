@@ -8,7 +8,7 @@
 
 <style lang="css" scoped>
 .myapp {
-  @apply bg-gray-100 min-h-screen p-12;
+  @apply bg-gray-100 min-h-screen p-12 font-opensans;
 }
 
 .main {

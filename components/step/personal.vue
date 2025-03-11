@@ -5,6 +5,7 @@
       <UiInput label="Nachname" name="nachname" class="w-1/2" />
     </div>
     <UiInput label="E-Mail" name="email" class="w-1/2" />
+    <UiInput label="Telefonnr." name="telefon" class="w-1/2" />
 
     <div class="flex gap-4 w-1/2">
       <UiInput label="Straße" name="straße" class="w-1/2" />
