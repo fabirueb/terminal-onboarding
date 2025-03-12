@@ -4,26 +4,26 @@
       label="Personalausweis (Vorderseite)"
       name="persofront"
       type="file"
-      class="w-1/2 text-sm"
+      class="w-full lg:w-1/2 text-sm"
     />
     <UiInput
       label="Personalausweis (Rückseite)"
       name="persoback"
       type="file"
-      class="w-1/2 text-sm"
+      class="w-full lg:w-1/2 text-sm"
     />
     <UiInput
       label="Gewerbeanmeldung"
       name="gwa"
       type="file"
-      class="w-1/2 text-sm"
+      class="w-full lg:w-1/2 text-sm"
     />
     <UiInput
       label="Gesellschafterliste"
       name="persoback"
       type="file"
-      class="w-1/2 text-sm"
-      v-if="einzelunternehmer"
+      class="w-full lg:w-1/2 text-sm"
+      v-if="!einzelunternehmer"
     />
   </div>
 </template>

@@ -20,7 +20,12 @@ const isActive = (index: number) => computed(() => index === props.currentStep);
 
 <template>
   <div class="stepper">
-    <div v-for="(step, index) in steps" :key="index" class="stepper--step">
+    <div
+      v-for="(step, index) in steps"
+      :key="index"
+      class="stepper--step"
+      :class="{ active: isActive(index).value }"
+    >
       <div
         class="stepper--indicator"
         :class="{ active: isActive(index).value }"
@@ -37,19 +42,27 @@ const isActive = (index: number) => computed(() => index === props.currentStep);
         step.title
       }}</span>
       <p class="stepper--description">{{ step.description }}</p>
-
-      <!-- Horizontal separator line after each step -->
-      <div v-if="index < steps.length - 1" class="step-separator"></div>
+      <div>
+        <Icon
+          v-for="(step, index) in steps"
+          :name="isActive(index).value ? 'tabler:point-filled' : 'tabler:point'"
+          class="text-red-400 lg:hidden"
+        ></Icon>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .stepper {
-  @apply flex justify-between w-full;
+  @apply flex justify-between w-full  border-b;
 
   &--step {
-    @apply flex flex-col items-center  h-56 w-72 gap-4;
+    @apply hidden lg:flex flex-col items-center lg:h-56 w-72 gap-4;
+  }
+
+  &--step.active {
+    @apply flex;
   }
 
   &--label {

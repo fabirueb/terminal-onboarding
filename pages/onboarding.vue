@@ -9,6 +9,7 @@
         <StepPersonal v-if="currentStep === 0" />
         <StepCompany
           v-if="currentStep === 1"
+          :einzelunternehmer="einzelunternehmer"
           @einzelunternehmer="
             (value) => {
               einzelunternehmer = value;
@@ -97,11 +98,11 @@ const onboardingSchema = [
   @apply flex flex-col items-center;
 
   &--header {
-    @apply w-4/5 border-b;
+    @apply w-4/5;
   }
 
   &--content {
-    @apply min-h-96 w-full p-12;
+    @apply min-h-96 w-full p-4 lg:p-12;
   }
 
   &--buttons {

@@ -18,7 +18,7 @@ const tag = computed(() =>
       $attrs.class,
       props.big
         ? { h1: 'text-8xl', h2: 'text-7xl', h3: 'text-5xl' }[tag]
-        : { h1: 'text-5xl', h2: 'text-3xl', h3: 'text-2xl' }[tag],
+        : { h1: 'text-2xl lg:text-5xl', h2: 'text-3xl', h3: 'text-2xl' }[tag],
     ]"
   >
     <slot />
